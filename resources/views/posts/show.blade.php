@@ -5,6 +5,7 @@
 @section('content')
 <h1 id="post-title">{{ $title }}</h1>
 
+@can('edit', $post)
 <!-- 編集・削除ボタン -->
 <div class="edit">
     <a href="{{ url('posts/'.$post->id.'/edit') }}" class="btn btn-primary">
@@ -15,12 +16,13 @@
         @slot('id', $post->id)
     @endcomponent
 </div>
+@endcan
 
 <!-- 記事内容 -->
 <dl class="row">
     <dt class="col-md-2">{{ __('Author') }}:</dt>
     <dd class="col-md-10">
-        <a href="{{ url('users/'.$post->user->id }}">
+        <a href="{{ url('users/'.$post->user->id) }}">
             {{ $post->user->name }}
         </a>
     </dd>
