@@ -98,6 +98,11 @@
     </nav>
     <!-- 個別ページの内容 -->
     <div class="container mt-3"><!-- 上マージン3を確保 -->
+        @if (session('status'))
+          <div class="alert alert-success">
+            {{ session('status') }}
+          </div>
+        @endif
         @yield('content')
     </div>
 
